@@ -54,6 +54,19 @@ class LinkedList:
         else:
             print("Node not found. Node can not be deleted.")
 
+    def length_iterative(self):
+        count = 0
+        current_node = self.head
+        while current_node:
+            count += 1
+            current_node = current_node.next
+        return count
+
+    def length_recursive(self, node):
+        if node is None:
+            return 0
+        return 1 + self.length_recursive(node.next)
+
     def print_list(self):
         current_node = self.head
         while current_node:
@@ -80,3 +93,7 @@ llist.print_list()
 print("")
 llist.delete_nth_node(4)
 llist.print_list()
+print("")
+
+print(llist.length_iterative())
+print(llist.length_recursive(llist.head))
