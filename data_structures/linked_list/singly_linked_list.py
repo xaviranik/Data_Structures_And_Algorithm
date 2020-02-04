@@ -54,6 +54,17 @@ class LinkedList:
         else:
             print("Node not found. Node can not be deleted.")
 
+    def reverse_list_iterative(self):
+        current_node = self.head
+        previous_node = None
+
+        while current_node:
+            next_node = current_node.next
+            current_node.next = previous_node
+            previous_node = current_node
+            current_node = next_node
+        self.head = previous_node
+
     def length_iterative(self):
         count = 0
         current_node = self.head
@@ -97,3 +108,6 @@ print("")
 
 print(llist.length_iterative())
 print(llist.length_recursive(llist.head))
+
+llist.reverse_list_iterative()
+llist.print_list()
