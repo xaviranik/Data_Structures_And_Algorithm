@@ -14,18 +14,14 @@ class LinkedList:
         self.head = new_node
 
     def insert_after_nth_node(self, n, data):
-        current_node = self.head
+        current_node = self.__get_node_at(n)
 
-        for i in range(1, n):
-            if current_node:
-                current_node = current_node.next
-            else:
-                print("Node not found.")
-                return
-
-        new_node = Node(data)
-        new_node.next = current_node.next
-        current_node.next = new_node
+        if current_node:
+            new_node = Node(data)
+            new_node.next = current_node.next
+            current_node.next = new_node
+        else:
+            print("Node Not Found")
 
     def append(self, data):
         new_node = Node(data)
@@ -39,11 +35,37 @@ class LinkedList:
             last_node = last_node.next
         last_node.next = new_node
 
+    def delete_nth_node(self, n):
+        if n == 1:
+            current_node = self.head
+            self.head = current_node.next
+            current_node = None
+            return
+
+        current_node = self.head
+        previous_node = None
+        for i in range(1, n):
+            previous_node = current_node
+            current_node = current_node.next
+
+        if current_node:
+            previous_node.next = current_node.next
+            current_node = None
+        else:
+            print("Node not found. Node can not be deleted.")
+
     def print_list(self):
         current_node = self.head
         while current_node:
             print(current_node.data, end=' ')
             current_node = current_node.next
+
+    def __get_node_at(self, n):
+        current_node = self.head
+        for i in range(1, n):
+            if current_node:
+                current_node = current_node.next
+        return current_node
 
 
 llist = LinkedList()
@@ -52,6 +74,9 @@ llist.append('B')
 llist.append('C')
 llist.prepend('X')
 
-llist.insert_after_nth_node(3, 'D')
+llist.insert_after_nth_node(1, 'D')
 
+llist.print_list()
+print("")
+llist.delete_nth_node(4)
 llist.print_list()
