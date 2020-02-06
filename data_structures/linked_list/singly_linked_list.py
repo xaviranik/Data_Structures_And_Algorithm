@@ -14,7 +14,7 @@ class LinkedList:
         self.head = new_node
 
     def insert_after_nth_node(self, n, data):
-        current_node = self.__get_node_at(n)
+        current_node = self._get_node_at(n)
 
         if current_node:
             new_node = Node(data)
@@ -99,8 +99,6 @@ class LinkedList:
 
         return new_head
 
-
-
     def length_iterative(self):
         count = 0
         current_node = self.head
@@ -120,7 +118,7 @@ class LinkedList:
             print(current_node.data, end=' ')
             current_node = current_node.next
 
-    def __get_node_at(self, n):
+    def _get_node_at(self, n):
         current_node = self.head
         for i in range(1, n):
             if current_node:
@@ -129,38 +127,3 @@ class LinkedList:
 
 
 llist1 = LinkedList()
-llist2 = LinkedList()
-# llist.append('A')
-# llist.append('B')
-# llist.append('C')
-# llist.prepend('X')
-#
-# llist.insert_after_nth_node(1, 'D')
-#
-# llist.print_list()
-# print("")
-# llist.delete_nth_node(4)
-# llist.print_list()
-# print("")
-#
-# print(llist.length_iterative())
-# print(llist.length_recursive(llist.head))
-#
-# llist.reverse_list_iterative()
-# llist.print_list()
-
-llist1.append(1)
-llist1.append(5)
-llist1.append(7)
-llist1.append(9)
-llist1.append(10)
-
-llist2.append(2)
-llist2.append(3)
-llist2.append(4)
-llist2.append(6)
-llist2.append(8)
-
-
-llist1.merge_sorted(llist2)
-llist1.print_list()
