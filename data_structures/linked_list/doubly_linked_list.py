@@ -42,6 +42,7 @@ class DoublyLinkedList:
             current_node = current_node.next
 
 dllist = DoublyLinkedList()
+dllist.prepend(10)
 dllist.append(1)
 dllist.append(2)
 dllist.append(3)
