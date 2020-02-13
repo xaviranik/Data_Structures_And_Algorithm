@@ -1,3 +1,6 @@
+from data_structures.queue.queue import Queue
+
+
 class Node:
     def __init__(self, value):
         self.value = value
@@ -16,6 +19,8 @@ class BinaryTree:
             return self._in_order_print(self.root, '')
         elif traversal_type == 'postorder':
             return self._post_order_print(self.root, '')
+        elif traversal_type == 'levelorder':
+            return self._level_order_print(self.root)
         else:
             return "Traversal type not found."
 
@@ -43,6 +48,25 @@ class BinaryTree:
             traversal += str(start.value) + '-'
         return traversal
 
+    def _level_order_print(self, start):
+        if start is None:
+            return
+
+        queue = Queue()
+        queue.enqueue(start)
+
+        traversal = ""
+        while len(queue) > 0:
+            traversal += str(queue.peek().value) + "-"
+            node = queue.dequeue()
+
+            if node.left:
+                queue.enqueue(node.left)
+            if node.right:
+                queue.enqueue(node.right)
+
+        return traversal
+
 
 tree = BinaryTree(1)
 tree.root.left = Node(2)
@@ -55,3 +79,4 @@ tree.root.right.right = Node(7)
 print(tree.print_tree(traversal_type='preorder'))
 print(tree.print_tree(traversal_type='inorder'))
 print(tree.print_tree(traversal_type='postorder'))
+print(tree.print_tree(traversal_type='levelorder'))
