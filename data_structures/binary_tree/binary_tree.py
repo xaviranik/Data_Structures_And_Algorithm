@@ -120,6 +120,11 @@ class BinaryTree:
                 stack.push(node.right)
         return size
 
+    def size_recursive(self, node):
+        if node is None:
+            return 0
+        return 1 + self.size_recursive(node.left) + self.size_recursive(node.right)
+
 
 tree = BinaryTree(1)
 tree.root.left = Node(2)
