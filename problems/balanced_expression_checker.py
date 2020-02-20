@@ -3,9 +3,12 @@ def balanced_expression_checker(s):
     for i, char in enumerate(s):
         if char == '<':
             stack.append(char)
-        if char == '/' and s[i + 1] != '>':
+        elif char == '/' and s[i + 1] != '>':
             break
-        if char == '>':
+        elif char == '>':
+            if len(stack) == 0:
+                print('not balanced')
+                return
             stack.pop()
 
     if len(stack) == 0:
