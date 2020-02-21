@@ -125,5 +125,3 @@ class LinkedList:
                 current_node = current_node.next
         return current_node
 
-
-llist1 = LinkedList()
